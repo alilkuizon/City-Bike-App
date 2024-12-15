@@ -1,15 +1,23 @@
 #ifndef JOURNEYMODEL_H
 #define JOURNEYMODEL_H
 
-#include <QObject>
+#include <QString>
 
-class JourneyModel : public QObject
+class JourneyModel
 {
-    Q_OBJECT
-  public:
-    explicit JourneyModel(QObject *parent = nullptr);
+  private:
+    int m_totalJourneysStarting;
+    int m_totalJourneysEnding;
+    double m_avgJourneyDistance;
+    double m_avgJourneyDuration;
 
-  signals:
+  public:
+    explicit JourneyModel(int totalJourneysStarting, int totalJourneysEnding,
+                          double avgJourneyDistance, double avgJourneyDuration);
+    int totalJourneysStarting() const;
+    int totalJourneysEnding() const;
+    double avgJourneyDistance() const;
+    double avgJourneyDuration() const;
 };
 
 #endif // JOURNEYMODEL_H

@@ -1,32 +1,24 @@
-QT += quick opengl
+QT += quick opengl sql
+
+QMAKE_CXXFLAGS += -Wunused-parameter -Werror
 
 HEADERS += \
-    core/ApplicationContext.h \
-    interfaces/IDataMapper.h \
+    global/globalDefinitions.h \
     interfaces/IDatabaseService.h \
-    interfaces/IJourneyRepository.h \
     interfaces/IStationRepository.h \
-    mappers/journeydatamapper.h \
-    mappers/stationdatamapper.h \
     models/journeymodel.h \
     models/stationmodel.h \
-    repositories/postgresjourneyrepository.h \
     repositories/postgresstationrepository.h \
     services/postgresDatabaseService.h \
-    utils/databasequeries.h \
     viewmodels/stationdetailviewmodel.h \
     viewmodels/stationlistviewmodel.h
 
 SOURCES += \
     main.cpp \
-    mappers/journeydatamapper.cpp \
-    mappers/stationdatamapper.cpp \
     models/journeymodel.cpp \
     models/stationmodel.cpp \
-    repositories/postgresjourneyrepository.cpp \
     repositories/postgresstationrepository.cpp \
     services/postgresDatabaseService.cpp \
-    utils/databasequeries.cpp \
     viewmodels/stationdetailviewmodel.cpp \
     viewmodels/stationlistviewmodel.cpp
 

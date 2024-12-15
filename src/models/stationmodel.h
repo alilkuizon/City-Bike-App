@@ -1,15 +1,21 @@
 #ifndef STATIONMODEL_H
 #define STATIONMODEL_H
 
-#include <QObject>
+#include <QString>
 
-class StationModel : public QObject
+class StationModel
 {
-    Q_OBJECT
   public:
-    explicit StationModel(QObject *parent = nullptr);
+    explicit StationModel(int id, const QString &name, const QString &address);
 
-  signals:
+    int id() const { return m_id; }
+    QString name() const { return m_name; }
+    QString address() const { return m_address; }
+
+  private:
+    int m_id;
+    QString m_name;
+    QString m_address;
 };
 
 #endif // STATIONMODEL_H

@@ -2,14 +2,21 @@
 #define POSTGRESSTATIONREPOSITORY_H
 
 #include <QObject>
+#include <interfaces/IDatabaseService.h>
+#include <interfaces/IStationRepository.h>
 
-class PostgresStationRepository : public QObject
+class PostgresStationRepository : public QObject, public IStationRepository
 {
     Q_OBJECT
   public:
-    explicit PostgresStationRepository(QObject *parent = nullptr);
+    explicit PostgresStationRepository(QSharedPointer<IDatabaseService> dbService);
 
-  signals:
+    QList<StationModel> getAllStations() override;
+    QSharedPointer<StationModel> getStationById(int stationId) override;
+    QSharedPointer<JourneyModel> getJourneyStatistics(int stationId) override;
+
+  private:
+    QSharedPointer<IDatabaseService> m_dbService;
 };
 
 #endif // POSTGRESSTATIONREPOSITORY_H
